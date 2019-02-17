@@ -89,8 +89,8 @@ class IndexPage extends Component {
                                 <p className="sm m2050">I mal{this.getWhateverSuffix()}</p>
 
                                 <div
-                                    onMouseOver={() => this.setState({whateverVisible: true})}
-                                    onMouseOut={() => this.setState({whateverVisible: false})}
+                                    onMouseEnter={() => this.setState({whateverVisible: true})}
+                                    onMouseLeave={() => this.setState({whateverVisible: false})}
                                 >
                                     <span className="pulse" onClick={() => this.setState({whateverVisible: true, whatever1Visible: true, whatever2Visible: true, whatever3Visible: true})}></span>
 
@@ -98,8 +98,8 @@ class IndexPage extends Component {
                                         <div
                                             className="option"
                                             onClick={() => this.handleClick('destination')}
-                                            onMouseOver={() => this.setState({whatever1Visible: true})}
-                                            onMouseOut={() => this.setState({whatever1Visible: false})}
+                                            onMouseEnter={() => this.setState({whatever1Visible: true})}
+                                            onMouseLeave={() => this.setState({whatever1Visible: false})}
                                         >
                                             <div className={(whatever === 'destination' || whateverVisible) ? 'label' : 'label hidden'}>Cíl</div>
                                             <div className={whatever1Visible ? 'desc' : 'desc hidden'}>Cíl může být: nějaká meta, stav, uspořádání, objekt, kterého má být v reálném čase dosaženo</div>
@@ -108,8 +108,8 @@ class IndexPage extends Component {
                                         <div
                                             className="option"
                                             onClick={() => this.handleClick('dream')}
-                                            onMouseOver={() => this.setState({whatever2Visible: true})}
-                                            onMouseOut={() => this.setState({whatever2Visible: false})}
+                                            onMouseEnter={() => this.setState({whatever2Visible: true})}
+                                            onMouseLeave={() => this.setState({whatever2Visible: false})}
                                         >
                                             <div className={(whatever === 'dream' || whateverVisible) ? 'label' : 'label hidden'}>Sen</div>
                                             <div className={whatever2Visible ? 'desc' : 'desc hidden'}>Sny často ukazují události, které jsou ve skutečnosti nemožné nebo nepravděpodobné</div>
@@ -118,8 +118,8 @@ class IndexPage extends Component {
                                         <div
                                             className="option"
                                             onClick={() => this.handleClick('wish')}
-                                            onMouseOver={() => this.setState({whatever3Visible: true})}
-                                            onMouseOut={() => this.setState({whatever3Visible: false})}
+                                            onMouseEnter={() => this.setState({whatever3Visible: true})}
+                                            onMouseLeave={() => this.setState({whatever3Visible: false})}
                                         >
                                             <div className={(whatever === 'wish' || whateverVisible) ? 'label' : 'label hidden'}>Přání</div>
                                             <div className={whatever3Visible ? 'desc' : 'desc hidden'}>Něco, co byste ač už tajně či veřejně chtěli dostat nebo dát</div>
