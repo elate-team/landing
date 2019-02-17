@@ -30,6 +30,37 @@ p {
     margin: 0;
 }
 
+.progress {
+
+    display: block;
+    width: 100%;
+    margin: 0 auto 20px;
+    max-width: 200px;
+    border: 1px solid #bbb;
+    border-radius: 5px;
+    padding: 2px;
+
+    .fill {
+        height: 3px;
+        border-radius: 5px;
+        background: #6dbff3;
+    }
+
+}
+
+.btns {
+
+    max-width: 640px;
+    margin: 0 auto;
+    width: 100%;
+    text-align: center;
+
+    button {
+        margin: 5px;
+    }
+
+}
+
 button {
 
     border: 1px solid #bbb;
