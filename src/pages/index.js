@@ -45,10 +45,7 @@ class IndexPage extends Component {
             whatever,
             whateverVisible: false
         }, () => {
-            setTimeout(() => {
-                window.fullpage_api.reBuild()
-                window.fullpage_api.moveSectionDown()
-            }, 2500)
+            setTimeout(() => window.fullpage_api.reBuild(), 2500)
         })
     }
 
