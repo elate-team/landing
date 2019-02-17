@@ -139,12 +139,17 @@ class IndexPage extends Component {
                                 <div className="section">
                                     <p className="sm" style={{marginBottom: '50px'}}>Na {this.getWhateverPrep()}</p>
 
-                                    <div className="scroll" style={{width: '92px', marginBottom: '20px'}}><img src={dreamImg} /></div>
-                                    <p className="blue upper" style={{fontSize: '1.1em', textAlign: 'center', marginBottom: '50px'}}>{this.getWhatever()}</p>
+                                    <Fade right>
+                                        <div className="scroll" style={{width: '92px', marginBottom: '20px'}}><img src={dreamImg} /></div>
+                                        <p className="blue upper" style={{fontSize: '1.1em', textAlign: 'center', marginBottom: '50px'}}>{this.getWhatever()}</p>
+                                    </Fade>
 
                                     <p className="sm" style={{margin: '10px 0 20px'}}>přece nikdy není</p>
                                     <p className="big upper" style={{marginBottom: '50px'}}>pozdě</p>
-                                    <div className="scroll"><img src={mouseImg} /></div>
+
+                                    <Fade bottom>
+                                        <div className="scroll"><img src={mouseImg} /></div>
+                                    </Fade>
                                 </div>
                             }
 
@@ -152,13 +157,22 @@ class IndexPage extends Component {
                                 <div className="section">
                                     <p className="sm" style={{marginBottom: '30px'}}>Jmenuju se</p>
 
-                                    <p className="blue upper" style={{fontSize: '2em', textAlign: 'center', marginBottom: '20px'}}>Elate</p>
-                                    <div className="scroll" style={{width: '130px', marginBottom: '30px'}}><img src={elateImg} /></div>
+                                    <Fade right>
+                                        <p className="blue upper" style={{fontSize: '2em', textAlign: 'center', marginBottom: '20px'}}>Elate</p>
+                                        <div className="scroll" style={{width: '130px', marginBottom: '30px'}}><img src={elateImg} /></div>
+                                    </Fade>
 
-                                    <p className="sm" style={{margin: '10px 0 20px'}}>a pomůžu</p>
-                                    <p className="sm" style={{margin: '10px 0 50px'}}>Ti tvůj <b className="blue upper">sen</b> splnit</p>
+                                    <Fade bottom>
+                                        <p className="sm" style={{margin: '10px 0 20px'}}>a pomůžu</p>
+                                    </Fade>
 
-                                    <button className="full">Vyzkoušet</button>
+                                    <Fade bottom>
+                                        <p className="sm" style={{margin: '10px 0 50px'}}>Ti tvůj <b className="blue upper">sen</b> splnit</p>
+                                    </Fade>
+
+                                    <Fade bottom>
+                                        <button className="full">Vyzkoušet</button>
+                                    </Fade>
                                 </div>
                             }
 
