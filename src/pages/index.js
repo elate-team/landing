@@ -21,7 +21,7 @@ class IndexPage extends Component {
     }
 
     componentDidMount = () => {
-        window.fullpage_api.destroy()
+        window.fullpage_api.setAllowScrolling(false)
     }
 
     getWhatever = () => {
@@ -45,7 +45,7 @@ class IndexPage extends Component {
             whatever,
             whateverVisible: false
         }, () => {
-            setTimeout(() => window.fullpage_api.reBuild(), 2500)
+            setTimeout(() => window.fullpage_api.setAllowScrolling(true), 2500)
         })
     }
 
@@ -57,6 +57,7 @@ class IndexPage extends Component {
                 <SEO title="Home" keywords={[`gatsby`, `application`, `react`]}/>
 
                 <ReactFullpage
+                    licenseKey={`PW%.tHBlBI[>'jK[3iFFLQchzobkcD!wMh+O>9l(W[2RUJ 7Y 4KfUomCv-lf964o9Q-YyUbRFz2-_3rBRfnb x\`lIcP>&;F|fm73p,)t.)KG\\-m$UbM.C@fI!IV%e] =6TF313fX*zY)KNI[:~F|*;rO'nfSgP3i(Xb{0 6V2&av5:XL'b!],_U[b;?a_G.*DYo2VC2E}==Hl4A]z-0 |EFr3rwHP>x$C!)[cSI*C/_ adt}\`|K-fIVF[%Pm&w 44H|LC)W[VPBIst\`(6>lStaew9Jw|d|1nB\\t~fD\`,a!x]Kcg9gspTWJab%!GA^Kc(_W"wI\`)hk]7T\\:%51kOX`}
                     render={({ state, fullpageApi }) => (
                         <ReactFullpage.Wrapper>
                             <div className="section">
@@ -75,7 +76,7 @@ class IndexPage extends Component {
                                             onMouseEnter={() => this.setState({whatever1Visible: true})}
                                             onMouseLeave={() => this.setState({whatever1Visible: false})}
                                         >
-                                            <div className="label">Cíl</div>
+                                            <div className={(whatever === 'destination' || whateverVisible) ? 'label' : 'label hidden'}>Cíl</div>
                                             <div className={whatever1Visible ? 'desc' : 'desc hidden'}>Cíl může být: nějaká meta, stav, uspořádání, objekt, kterého má být v reálném čase dosaženo</div>
                                             <div className={whatever1Visible ? 'choose' : 'choose hidden'}>Vybrat</div>
                                         </div>
@@ -85,7 +86,7 @@ class IndexPage extends Component {
                                             onMouseEnter={() => this.setState({whatever2Visible: true})}
                                             onMouseLeave={() => this.setState({whatever2Visible: false})}
                                         >
-                                            <div className="label">Sen</div>
+                                            <div className={(whatever === 'dream' || whateverVisible) ? 'label' : 'label hidden'}>Sen</div>
                                             <div className={whatever2Visible ? 'desc' : 'desc hidden'}>Sny často ukazují události, které jsou ve skutečnosti nemožné nebo nepravděpodobné</div>
                                             <div className={whatever2Visible ? 'choose' : 'choose hidden'}>Vybrat</div>
                                         </div>
@@ -95,7 +96,7 @@ class IndexPage extends Component {
                                             onMouseEnter={() => this.setState({whatever3Visible: true})}
                                             onMouseLeave={() => this.setState({whatever3Visible: false})}
                                         >
-                                            <div className="label">Přání</div>
+                                            <div className={(whatever === 'wish' || whateverVisible) ? 'label' : 'label hidden'}>Přání</div>
                                             <div className={whatever3Visible ? 'desc' : 'desc hidden'}>Něco, co byste ač už tajně či veřejně chtěli dostat nebo dát</div>
                                             <div className={whatever3Visible ? 'choose' : 'choose hidden'}>Vybrat</div>
                                         </div>
@@ -103,7 +104,7 @@ class IndexPage extends Component {
                                 </div>
 
                                 <div className={whatever ? 'joy' : 'joy hidden'}>
-                                    <p className="sm">Ti udělá</p>
+                                    <p className="sm" style={{margin: '10px 0 20px'}}>Ti udělá</p>
                                     <p className="big upper" style={{marginBottom: '50px'}}>radost</p>
                                     <div className="scroll"><img src={mouseImg} /></div>
                                 </div>
@@ -111,12 +112,13 @@ class IndexPage extends Component {
 
                             {step > 1 &&
                                 <div className="section">
-                                    <p className="sm">Na tvůj</p>
-                                    <p>whatever</p>
-                                    <p className="sm">přece nikdy není</p>
-                                    <p className="big">pozdě</p>
+                                    <div className="joy">
+                                        <p className="sm" style={{marginBottom: '50px'}}>Na tvůj</p>
 
-                                    <div className="scroll"><img src={mouseImg} /></div>
+                                        <p className="sm" style={{margin: '10px 0 20px'}}>přece nikdy není</p>
+                                        <p className="big upper" style={{marginBottom: '50px'}}>pozdě</p>
+                                        <div className="scroll"><img src={mouseImg} /></div>
+                                    </div>
                                 </div>
                             }
 
