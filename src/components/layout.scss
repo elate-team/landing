@@ -30,6 +30,29 @@ p {
     margin: 0;
 }
 
+button {
+
+    border: 1px solid #bbb;
+    background: transparent;
+    color: #6dbff3;
+    padding: 10px 50px;
+
+    &.full {
+        display: block;
+        width: 100%;
+        max-width: 280px;
+        margin: 0 auto;
+    }
+
+    &:hover {
+        background: #6dbff3;
+        color: white;
+        border-color: transparent;
+        cursor: pointer;
+    }
+
+}
+
 .sm {
     text-align: center;
     font-size: 1.1em;

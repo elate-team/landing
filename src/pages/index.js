@@ -6,6 +6,7 @@ import Layout from '../components/layout'
 import SEO from '../components/seo'
 
 import mouseImg from '../images/mouse.png'
+import dreamImg from '../images/dream.png'
 import elateImg from '../images/robot.png'
 import rejdaImg from '../images/lukasrejda.png'
 
@@ -39,6 +40,30 @@ class IndexPage extends Component {
         }
     }
 
+    getWhateverPrep = () => {
+        const { whatever } = this.state
+
+        switch(whatever) {
+            case 'wish':
+                return 'tvoje'
+
+            default:
+                return 'tvůj'
+        }
+    }
+
+    getWhateverSuffix = () => {
+        const { whatever } = this.state
+
+        switch(whatever) {
+            case 'wish':
+                return 'é'
+
+            default:
+                return 'ý'
+        }
+    }
+
     handleClick = (whatever) => {
         this.setState({
             step: 2,
@@ -61,11 +86,11 @@ class IndexPage extends Component {
                     render={({ state, fullpageApi }) => (
                         <ReactFullpage.Wrapper>
                             <div className="section">
-                                <p className="sm" style={{marginBottom: '50px'}}>I malý</p>
+                                <p className="sm" style={{marginBottom: '50px'}}>I mal{this.getWhateverSuffix()}</p>
 
                                 <div
-                                    onMouseEnter={() => this.setState({whateverVisible: true})}
-                                    onMouseLeave={() => this.setState({whateverVisible: false})}
+                                    onMouseOver={() => this.setState({whateverVisible: true})}
+                                    onMouseOut={() => this.setState({whateverVisible: false})}
                                 >
                                     <span className="pulse"></span>
 
@@ -73,8 +98,8 @@ class IndexPage extends Component {
                                         <div
                                             className="option"
                                             onClick={() => this.handleClick('destination')}
-                                            onMouseEnter={() => this.setState({whatever1Visible: true})}
-                                            onMouseLeave={() => this.setState({whatever1Visible: false})}
+                                            onMouseOver={() => this.setState({whatever1Visible: true})}
+                                            onMouseOut={() => this.setState({whatever1Visible: false})}
                                         >
                                             <div className={(whatever === 'destination' || whateverVisible) ? 'label' : 'label hidden'}>Cíl</div>
                                             <div className={whatever1Visible ? 'desc' : 'desc hidden'}>Cíl může být: nějaká meta, stav, uspořádání, objekt, kterého má být v reálném čase dosaženo</div>
@@ -83,8 +108,8 @@ class IndexPage extends Component {
                                         <div
                                             className="option"
                                             onClick={() => this.handleClick('dream')}
-                                            onMouseEnter={() => this.setState({whatever2Visible: true})}
-                                            onMouseLeave={() => this.setState({whatever2Visible: false})}
+                                            onMouseOver={() => this.setState({whatever2Visible: true})}
+                                            onMouseOut={() => this.setState({whatever2Visible: false})}
                                         >
                                             <div className={(whatever === 'dream' || whateverVisible) ? 'label' : 'label hidden'}>Sen</div>
                                             <div className={whatever2Visible ? 'desc' : 'desc hidden'}>Sny často ukazují události, které jsou ve skutečnosti nemožné nebo nepravděpodobné</div>
@@ -93,8 +118,8 @@ class IndexPage extends Component {
                                         <div
                                             className="option"
                                             onClick={() => this.handleClick('wish')}
-                                            onMouseEnter={() => this.setState({whatever3Visible: true})}
-                                            onMouseLeave={() => this.setState({whatever3Visible: false})}
+                                            onMouseOver={() => this.setState({whatever3Visible: true})}
+                                            onMouseOut={() => this.setState({whatever3Visible: false})}
                                         >
                                             <div className={(whatever === 'wish' || whateverVisible) ? 'label' : 'label hidden'}>Přání</div>
                                             <div className={whatever3Visible ? 'desc' : 'desc hidden'}>Něco, co byste ač už tajně či veřejně chtěli dostat nebo dát</div>
@@ -112,25 +137,28 @@ class IndexPage extends Component {
 
                             {step > 1 &&
                                 <div className="section">
-                                    <div className="joy">
-                                        <p className="sm" style={{marginBottom: '50px'}}>Na tvůj</p>
+                                    <p className="sm" style={{marginBottom: '50px'}}>Na {this.getWhateverPrep()}</p>
 
-                                        <p className="sm" style={{margin: '10px 0 20px'}}>přece nikdy není</p>
-                                        <p className="big upper" style={{marginBottom: '50px'}}>pozdě</p>
-                                        <div className="scroll"><img src={mouseImg} /></div>
-                                    </div>
+                                    <div className="scroll" style={{width: '92px', marginBottom: '20px'}}><img src={dreamImg} /></div>
+                                    <p className="blue upper" style={{fontSize: '1.1em', textAlign: 'center', marginBottom: '50px'}}>{this.getWhatever()}</p>
+
+                                    <p className="sm" style={{margin: '10px 0 20px'}}>přece nikdy není</p>
+                                    <p className="big upper" style={{marginBottom: '50px'}}>pozdě</p>
+                                    <div className="scroll"><img src={mouseImg} /></div>
                                 </div>
                             }
 
                             {step > 1 &&
                                 <div className="section">
-                                    <p className="sm">Jmenuju se</p>
-                                    <p className="big">Elate</p>
-                                    <img src={elateImg} />
-                                    <p className="sm">a pomůžu</p>
-                                    <p className="sm">ti tvůj <b>sen</b> splnit</p>
+                                    <p className="sm" style={{marginBottom: '30px'}}>Jmenuju se</p>
 
-                                    <button>Vyzkoušet</button>
+                                    <p className="blue upper" style={{fontSize: '2em', textAlign: 'center', marginBottom: '20px'}}>Elate</p>
+                                    <div className="scroll" style={{width: '130px', marginBottom: '30px'}}><img src={elateImg} /></div>
+
+                                    <p className="sm" style={{margin: '10px 0 20px'}}>a pomůžu</p>
+                                    <p className="sm" style={{margin: '10px 0 50px'}}>Ti tvůj <b className="blue upper">sen</b> splnit</p>
+
+                                    <button className="full">Vyzkoušet</button>
                                 </div>
                             }
 
