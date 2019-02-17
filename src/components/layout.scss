@@ -1,8 +1,25 @@
 @import '~normalize.css/normalize.css';
 
+@font-face {
+    font-family: 'Mirai';
+    src: url('../fonts/mirai-light.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'Mirai';
+    font-weight: bold;
+    src: url('../fonts/mirai-regular.otf') format('opentype');
+}
+
 body {
-    font-family: sans-serif;
+
+    font-family: 'Mirai', sans-serif;
     color: #575756;
+
+    * {
+        transition: .3s ease;
+    }
+
 }
 
 .section {
@@ -11,10 +28,12 @@ body {
 
 .sm {
     text-align: center;
+    font-size: 1.1em;
 }
 
 .big {
     text-align: center;
+    font-size: 2em;
 }
 
 .blue {
@@ -36,18 +55,33 @@ body {
 
 }
 
+.joy {
+
+    &.hidden {
+        opacity: 0;
+    }
+
+}
+
 .select {
 
     display: flex;
+    padding: 50px 0 20px;
     justify-content: center;
+
+    &.hidden, .hidden {
+        opacity: 0;
+    }
 
     .option {
 
         flex-basis: 220px;
         text-align: center;
+        cursor: pointer;
 
         .label {
             color: #6dbff3;
+            font-size: 1.3em;
             text-transform: uppercase;
             margin-bottom: 40px;
         }
@@ -57,15 +91,26 @@ body {
             margin-bottom: 20px;
         }
 
+        .choose {
+
+            color: #6dbff3;
+            font-size: .9em;
+
+            &:hover {
+                text-decoration: underline;
+            }
+
+        }
+
     }
 
 }
 
 .pulse {
-    margin: 0 auto 50px;
+    margin: 0 auto;
     display: block;
-    width: 8px;
-    height: 8px;
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
     background: #03b8d9;
     cursor: pointer;
