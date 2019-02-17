@@ -6,7 +6,6 @@ import Helmet from 'react-helmet'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 
-import mouseImg from '../images/mouse.png'
 import dreamImg from '../images/dream.png'
 import elateImg from '../images/robot.png'
 import rejdaImg from '../images/lukasrejda.png'
@@ -84,6 +83,7 @@ class IndexPage extends Component {
                 <Helmet title="Elate" />
 
                 <ReactFullpage
+                    onLeave={console.log}
                     licenseKey={`PW%.tHBlBI[>'jK[3iFFLQchzobkcD!wMh+O>9l(W[2RUJ 7Y 4KfUomCv-lf964o9Q-YyUbRFz2-_3rBRfnb x\`lIcP>&;F|fm73p,)t.)KG\\-m$UbM.C@fI!IV%e] =6TF313fX*zY)KNI[:~F|*;rO'nfSgP3i(Xb{0 6V2&av5:XL'b!],_U[b;?a_G.*DYo2VC2E}==Hl4A]z-0 |EFr3rwHP>x$C!)[cSI*C/_ adt}\`|K-fIVF[%Pm&w 44H|LC)W[VPBIst\`(6>lStaew9Jw|d|1nB\\t~fD\`,a!x]Kcg9gspTWJab%!GA^Kc(_W"wI\`)hk]7T\\:%51kOX`}
                     render={({ state, fullpageApi }) => (
                         <ReactFullpage.Wrapper>
@@ -133,8 +133,13 @@ class IndexPage extends Component {
                                 <div className={whatever ? 'joy' : 'joy hidden'}>
                                     <p className="sm" style={{margin: '10px 0 20px'}}>Ti udělá</p>
                                     <p className="big upper" style={{marginBottom: '50px'}}>radost</p>
-                                    <div className="scroll mobile-hidden"><img src={mouseImg} /></div>
+                                    <div className="scroll-downs">
+                                        <div className="mousey">
+                                            <div className="scroller"></div>
+                                        </div>
+                                    </div>
                                 </div>
+
                             </div>
 
                             {step > 1 &&
@@ -148,10 +153,11 @@ class IndexPage extends Component {
 
                                     <p className="sm" style={{margin: '10px 0 20px'}}>přece nikdy není</p>
                                     <p className="big upper" style={{marginBottom: '50px'}}>pozdě</p>
-
-                                    <Fade bottom>
-                                        <div className="scroll"><img src={mouseImg} /></div>
-                                    </Fade>
+                                    <div className="scroll-downs">
+                                        <div className="mousey">
+                                            <div className="scroller"></div>
+                                        </div>
+                                    </div>
                                 </div>
                             }
 

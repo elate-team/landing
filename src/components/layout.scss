@@ -22,6 +22,42 @@ body {
 
 }
 
+.scroll-downs {
+
+    margin: auto;
+    width: 30px;
+    height: 55px;
+
+    .mousey {
+        width: 3px;
+        padding: 2px 8px;
+        height: 35px;
+        border: 2px solid #bbb;
+        border-radius: 25px;
+        opacity: 0.75;
+        box-sizing: content-box;
+    }
+
+    .scroller {
+        width: 3px;
+        height: 5px;
+        border-radius: 25%;
+        background-color: #bbb;
+        animation-name: scroll;
+        animation-duration: 2.2s;
+        animation-timing-function: cubic-bezier(.15,.41,.69,.94);
+        animation-iteration-count: infinite;
+    }
+
+    @keyframes scroll {
+        0% { transform: translateY(3px); opacity: 0; }
+        30% { transform: translateY(12px); opacity: 1; }
+        100% { transform: translateY(15px); opacity: 0;}
+    }
+
+}
+
+
 .mobile-hidden {
 
     display: none;
