@@ -86,13 +86,13 @@ class IndexPage extends Component {
                     render={({ state, fullpageApi }) => (
                         <ReactFullpage.Wrapper>
                             <div className="section">
-                                <p className="sm" style={{marginBottom: '50px'}}>I mal{this.getWhateverSuffix()}</p>
+                                <p className="sm m2050">I mal{this.getWhateverSuffix()}</p>
 
                                 <div
                                     onMouseOver={() => this.setState({whateverVisible: true})}
                                     onMouseOut={() => this.setState({whateverVisible: false})}
                                 >
-                                    <span className="pulse"></span>
+                                    <span className="pulse" onClick={() => this.setState({whateverVisible: true, whatever1Visible: true, whatever2Visible: true, whatever3Visible: true})}></span>
 
                                     <div className={(whatever || whateverVisible) ? 'select' : 'select hidden'}>
                                         <div
@@ -131,7 +131,7 @@ class IndexPage extends Component {
                                 <div className={whatever ? 'joy' : 'joy hidden'}>
                                     <p className="sm" style={{margin: '10px 0 20px'}}>Ti udělá</p>
                                     <p className="big upper" style={{marginBottom: '50px'}}>radost</p>
-                                    <div className="scroll"><img src={mouseImg} /></div>
+                                    <div className="scroll mobile-hidden"><img src={mouseImg} /></div>
                                 </div>
                             </div>
 
