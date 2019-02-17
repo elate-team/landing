@@ -178,7 +178,9 @@ class IndexPage extends Component {
 
                             {step > 1 &&
                                 <div className="section">
-                                    <p className="big upper blue" style={{marginBottom: '30px'}}>Děkuji</p>
+                                    <Fade top>
+                                        <p className="big upper blue" style={{marginBottom: '30px'}}>Děkuji</p>
+                                    </Fade>
 
                                     <p className="sm" style={{marginBottom: '15px'}}>Momentálně mi pomoháš splnit můj sen.</p>
 
@@ -188,14 +190,18 @@ class IndexPage extends Component {
 
                                     <p className="sm" style={{marginBottom: '30px', fontSize: '.85em'}}>Aspoň sis dokázal, jak důležitá je asistence při plnění snu.</p>
 
-                                    <div className="scroll" style={{width: '150px', marginBottom: '30px'}}><img src={rejdaImg} /></div>
+                                    <Fade right>
+                                        <div className="scroll" style={{width: '150px', marginBottom: '30px'}}><img src={rejdaImg} /></div>
+                                    </Fade>
 
                                     <p className="sm" style={{marginBottom: '30px'}}>Zanech mi kontakt a buď u toho, bude to velké!</p>
 
-                                    <div className="btns">
-                                        <button>Tel.</button>
-                                        <button>E-mail</button>
-                                    </div>
+                                    <Fade bottom>
+                                        <div className="btns">
+                                            <button>Tel.</button>
+                                            <button>E-mail</button>
+                                        </div>
+                                    </Fade>
                                 </div>
                             }
                         </ReactFullpage.Wrapper>
