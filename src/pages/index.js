@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import ReactFullpage from '@fullpage/react-fullpage'
 import Fade from 'react-reveal/Fade'
+import Helmet from 'react-helmet'
 
 import Layout from '../components/layout'
 import SEO from '../components/seo'
@@ -79,7 +80,8 @@ class IndexPage extends Component {
 
         return (
             <Layout>
-                <SEO title="Home" keywords={[`gatsby`, `application`, `react`]}/>
+                {/*<SEO title="Home" keywords={[`gatsby`, `application`, `react`]}/>*/}
+                <Helmet title="Elate" />
 
                 <ReactFullpage
                     licenseKey={`PW%.tHBlBI[>'jK[3iFFLQchzobkcD!wMh+O>9l(W[2RUJ 7Y 4KfUomCv-lf964o9Q-YyUbRFz2-_3rBRfnb x\`lIcP>&;F|fm73p,)t.)KG\\-m$UbM.C@fI!IV%e] =6TF313fX*zY)KNI[:~F|*;rO'nfSgP3i(Xb{0 6V2&av5:XL'b!],_U[b;?a_G.*DYo2VC2E}==Hl4A]z-0 |EFr3rwHP>x$C!)[cSI*C/_ adt}\`|K-fIVF[%Pm&w 44H|LC)W[VPBIst\`(6>lStaew9Jw|d|1nB\\t~fD\`,a!x]Kcg9gspTWJab%!GA^Kc(_W"wI\`)hk]7T\\:%51kOX`}
