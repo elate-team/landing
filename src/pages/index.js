@@ -74,6 +74,10 @@ class IndexPage extends Component {
         })
     }
 
+    slideCheck = (from, to) => {
+        if(to.index === 2) window.fullpage_api.setAllowScrolling(false)
+    }
+
     render = () => {
         const { step, whatever, whateverVisible, whatever1Visible, whatever2Visible, whatever3Visible } = this.state
 
@@ -83,7 +87,7 @@ class IndexPage extends Component {
                 <Helmet title="Elate" />
 
                 <ReactFullpage
-                    onLeave={console.log}
+                    onLeave={this.slideCheck}
                     licenseKey={`PW%.tHBlBI[>'jK[3iFFLQchzobkcD!wMh+O>9l(W[2RUJ 7Y 4KfUomCv-lf964o9Q-YyUbRFz2-_3rBRfnb x\`lIcP>&;F|fm73p,)t.)KG\\-m$UbM.C@fI!IV%e] =6TF313fX*zY)KNI[:~F|*;rO'nfSgP3i(Xb{0 6V2&av5:XL'b!],_U[b;?a_G.*DYo2VC2E}==Hl4A]z-0 |EFr3rwHP>x$C!)[cSI*C/_ adt}\`|K-fIVF[%Pm&w 44H|LC)W[VPBIst\`(6>lStaew9Jw|d|1nB\\t~fD\`,a!x]Kcg9gspTWJab%!GA^Kc(_W"wI\`)hk]7T\\:%51kOX`}
                     render={({ state, fullpageApi }) => (
                         <ReactFullpage.Wrapper>
@@ -179,7 +183,7 @@ class IndexPage extends Component {
                                     </Fade>
 
                                     <Fade bottom>
-                                        <button className="full">Vyzkoušet</button>
+                                        <button className="full" onClick={() => window.fullpage_api.moveSectionDown()}>Vyzkoušet</button>
                                     </Fade>
                                 </div>
                             }
