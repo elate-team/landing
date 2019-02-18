@@ -134,15 +134,21 @@ class IndexPage extends Component {
                                     </div>
                                 </div>
 
-                                <div className={whatever ? 'joy' : 'joy hidden'}>
+                                <Fade duration={1500} when={!!whatever} delay={0}>
                                     <p className="sm" style={{margin: '10px 0 20px'}}>Ti udělá</p>
+                                </Fade>
+
+                                <Fade duration={1500} when={!!whatever} delay={500}>
                                     <p className="big upper" style={{marginBottom: '50px'}}>radost</p>
+                                </Fade>
+
+                                <Fade duration={1500} when={!!whatever} delay={1000}>
                                     <div className="scroll-downs">
                                         <div className="mousey">
                                             <div className="scroller"></div>
                                         </div>
                                     </div>
-                                </div>
+                                </Fade>
 
                             </div>
 
@@ -150,18 +156,26 @@ class IndexPage extends Component {
                                 <div className="section">
                                     <p className="sm" style={{marginBottom: '50px'}}>Na {this.getWhateverPrep()}</p>
 
-                                    <Fade right>
+                                    <Fade duration={1500} delay={0}>
                                         <div className="scroll" style={{width: '92px', marginBottom: '20px'}}><img src={dreamImg} /></div>
                                         <p className="blue upper" style={{fontSize: '1.1em', textAlign: 'center', marginBottom: '50px'}}>{this.getWhatever()}</p>
                                     </Fade>
 
-                                    <p className="sm" style={{margin: '10px 0 20px'}}>přece nikdy není</p>
-                                    <p className="big upper" style={{marginBottom: '50px'}}>pozdě</p>
-                                    <div className="scroll-downs">
-                                        <div className="mousey">
-                                            <div className="scroller"></div>
+                                    <Fade duration={1500} delay={500}>
+                                        <p className="sm" style={{margin: '10px 0 20px'}}>přece nikdy není</p>
+                                    </Fade>
+
+                                    <Fade duration={1500} delay={1000}>
+                                        <p className="big upper" style={{marginBottom: '50px'}}>pozdě</p>
+                                    </Fade>
+
+                                    <Fade duration={1500} delay={1500}>
+                                        <div className="scroll-downs">
+                                            <div className="mousey">
+                                                <div className="scroller"></div>
+                                            </div>
                                         </div>
-                                    </div>
+                                    </Fade>
                                 </div>
                             }
 
@@ -169,20 +183,20 @@ class IndexPage extends Component {
                                 <div className="section">
                                     <p className="sm" style={{marginBottom: '30px'}}>Jmenuju se</p>
 
-                                    <Fade right>
+                                    <Fade duration={1500} delay={0}>
                                         <p className="blue upper" style={{fontSize: '2em', textAlign: 'center', marginBottom: '20px'}}>Elate</p>
                                         <div className="scroll" style={{width: '130px', marginBottom: '30px'}}><img src={elateImg} /></div>
                                     </Fade>
 
-                                    <Fade bottom>
+                                    <Fade duration={1500} delay={500}>
                                         <p className="sm" style={{margin: '10px 0 20px'}}>a pomůžu</p>
                                     </Fade>
 
-                                    <Fade bottom>
+                                    <Fade duration={1500} delay={1000}>
                                         <p className="sm" style={{margin: '10px 0 50px'}}>Ti tvůj <b className="blue upper">sen</b> splnit</p>
                                     </Fade>
 
-                                    <Fade bottom>
+                                    <Fade duration={1500} delay={1500}>
                                         <button className="full" onClick={() => window.fullpage_api.moveSectionDown()}>Vyzkoušet</button>
                                     </Fade>
                                 </div>
@@ -190,25 +204,33 @@ class IndexPage extends Component {
 
                             {step > 1 &&
                                 <div className="section">
-                                    <Fade top>
+                                    <Fade duration={1500} delay={0}>
                                         <p className="big upper blue" style={{marginBottom: '30px'}}>Děkuji</p>
                                     </Fade>
 
-                                    <p className="sm" style={{marginBottom: '15px'}}>Momentálně mi pomoháš splnit můj sen.</p>
+                                    <Fade duration={1500} delay={500}>
+                                        <p className="sm" style={{marginBottom: '15px'}}>Momentálně mi pomoháš splnit můj sen.</p>
+                                    </Fade>
 
-                                    <div className="progress">
-                                        <div className="fill" stye={{width: '33%'}}></div>
-                                    </div>
+                                    <Fade duration={1500} delay={1500}>
+                                        <div className="progress">
+                                            <div className="fill" stye={{width: '33%'}}></div>
+                                        </div>
+                                    </Fade>
 
-                                    <p className="sm" style={{marginBottom: '30px', fontSize: '.85em'}}>Aspoň sis dokázal, jak důležitá je asistence při plnění snu.</p>
+                                    <Fade duration={1500} delay={2000}>
+                                        <p className="sm" style={{marginBottom: '30px', fontSize: '.85em'}}>Aspoň sis dokázal, jak důležitá je asistence při plnění snu.</p>
+                                    </Fade>
 
-                                    <Fade right>
+                                    <Fade duration={1500} delay={2500}>
                                         <div className="scroll" style={{width: '150px', marginBottom: '30px'}}><img src={rejdaImg} /></div>
                                     </Fade>
 
-                                    <p className="sm" style={{marginBottom: '30px'}}>Zanech mi kontakt a buď u toho, bude to velké!</p>
+                                    <Fade duration={1500} delay={3000}>
+                                        <p className="sm" style={{marginBottom: '30px'}}>Zanech mi kontakt a buď u toho, bude to velké!</p>
+                                    </Fade>
 
-                                    <Fade bottom>
+                                    <Fade duration={1500} delay={3500}>
                                         <div className="btns">
                                             <button>Tel.</button>
                                             <button>E-mail</button>
