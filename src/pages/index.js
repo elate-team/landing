@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import ReactFullpage from '@fullpage/react-fullpage'
 import Fade from 'react-reveal/Fade'
 import Helmet from 'react-helmet'
+import ReactGA from 'react-ga'
 
 import Layout from '../components/layout'
 import SEO from '../components/seo'
@@ -23,6 +24,9 @@ class IndexPage extends Component {
 
     componentDidMount = () => {
         window.fullpage_api.setAllowScrolling(false)
+
+        ReactGA.initialize('UA-134679279-1');
+        ReactGA.pageview(window.location.pathname);
     }
 
     getWhatever = () => {
@@ -64,7 +68,21 @@ class IndexPage extends Component {
         }
     }
 
+    handleCTAClick = () => {
+        ReactGA.action({
+            category: 'User',
+            action: `Wants to try it!`
+        })
+
+        window.fullpage_api.moveSectionDown()
+    }
+
     handleClick = (whatever) => {
+        ReactGA.action({
+            category: 'User',
+            action: `Selected ${whatever}`
+        })
+
         this.setState({
             step: 2,
             whatever,
@@ -197,7 +215,7 @@ class IndexPage extends Component {
                                     </Fade>
 
                                     <Fade duration={1500} delay={1500}>
-                                        <button className="full" onClick={() => window.fullpage_api.moveSectionDown()}>Vyzkoušet</button>
+                                        <button className="full" onClick={this.handleCTAClick}>Vyzkoušet</button>
                                     </Fade>
                                 </div>
                             }
