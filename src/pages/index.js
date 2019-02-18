@@ -69,7 +69,7 @@ class IndexPage extends Component {
     }
 
     handleCTAClick = () => {
-        ReactGA.action({
+        ReactGA.event({
             category: 'User',
             action: `Wants to try it!`
         })
@@ -78,7 +78,7 @@ class IndexPage extends Component {
     }
 
     handleClick = (whatever) => {
-        ReactGA.action({
+        ReactGA.event({
             category: 'User',
             action: `Selected ${whatever}`
         })
