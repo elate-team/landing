@@ -239,6 +239,7 @@ button {
 .select {
 
     padding: 0 0 20px;
+    max-height: 100vh;
 
     @media (min-width: 640px) {
         display: flex;
@@ -248,6 +249,7 @@ button {
     &.hidden {
 
         opacity: 0 !important;
+        max-height: 0;
 
         * {
             cursor: default !important;
