@@ -1,0 +1,9 @@
+{
+  "root": "public/",
+  "error_page": "404.html",
+  "headers": {
+    "/**.js": {
+      "Cache-Control": "public, max-age=0, must-revalidate"
+    }
+  }
+}
