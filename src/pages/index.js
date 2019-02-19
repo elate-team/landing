@@ -23,7 +23,7 @@ class IndexPage extends Component {
     }
 
     componentDidMount = () => {
-        // window.fullpage_api.setAllowScrolling(false)
+        window.fullpage_api.setAllowScrolling(false)
 
         ReactGA.initialize('UA-134679279-1');
         ReactGA.pageview(window.location.pathname);
@@ -92,7 +92,7 @@ class IndexPage extends Component {
     }
 
     slideCheck = (from, to) => {
-        // if(to.index === 2) window.fullpage_api.setAllowScrolling(false)
+        if(to.index === 2) window.fullpage_api.setAllowScrolling(false)
         if(this.state.step !== to.index + 1) this.setState({step: to.index + 1})
     }
 
