@@ -57,7 +57,6 @@ body {
 
 }
 
-
 .mobile-hidden {
 
     display: none;
@@ -180,6 +179,29 @@ button {
 
 }
 
+.hoverable {
+
+    & > * {
+        opacity: 0;
+    }
+
+    &:hover > * {
+        opacity: 1;
+    }
+
+}
+
+.animated {
+
+    opacity: 0;
+    transition: 1.6s ease;
+
+    &.active {
+        opacity: 1;
+    }
+
+}
+
 .select {
 
     padding: 0 0 20px;
@@ -187,6 +209,10 @@ button {
     @media (min-width: 640px) {
         display: flex;
         justify-content: center;
+    }
+
+    &.hidden {
+        opacity: 0 !important;
     }
 
     .option {
@@ -198,6 +224,14 @@ button {
 
         @media (min-width: 640px) {
             margin-bottom: 0;
+        }
+
+        &:hover {
+
+            .desc, .choose {
+                opacity: 1;
+            }
+
         }
 
         .label {
@@ -216,6 +250,7 @@ button {
 
         .desc {
 
+            opacity: 0;
             color: #505050;
             margin-bottom: 5px;
             font-size: .9em;
@@ -229,6 +264,7 @@ button {
 
         .choose {
 
+            opacity: 0;
             color: #6dbff3;
             font-size: .9em;
 
@@ -252,8 +288,8 @@ button {
     cursor: pointer;
     box-shadow: 0 0 0 rgba(#03b8d9, 0.4);
     animation: pulse 2s infinite;
-
     margin: 0 auto 20px;
+    opacity: 1 !important;
 
     @media (min-width: 640px) {
         margin: 0 auto 50px;

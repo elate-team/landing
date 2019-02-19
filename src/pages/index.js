@@ -15,11 +15,7 @@ class IndexPage extends Component {
 
     state = {
         step: 1,
-        whatever: null,
-        whateverVisible: false,
-        whatever1Visible: false,
-        whatever2Visible: false,
-        whatever3Visible: false
+        whatever: null
     }
 
     componentDidMount = () => {
@@ -71,21 +67,18 @@ class IndexPage extends Component {
             action: `Selected ${whatever}`
         })
 
-        this.setState({
-            step: 2,
-            whatever,
-            whateverVisible: false
-        }, () => {
+        this.setState({whatever}, () => {
             setTimeout(() => window.fullpage_api.setAllowScrolling(true), 2500)
         })
     }
 
     slideCheck = (from, to) => {
         if(to.index === 2) window.fullpage_api.setAllowScrolling(false)
+        if(this.state.step !== to.index + 1) this.setState({step: to.index + 1})
     }
 
     render = () => {
-        const { step, whatever, whateverVisible, whatever1Visible, whatever2Visible, whatever3Visible } = this.state
+        const { step, whatever } = this.state
 
         return (
             <Layout>
@@ -100,150 +93,127 @@ class IndexPage extends Component {
                             <div className="section">
                                 <p className="sm m2050">Splnit si i nejmenší</p>
 
-                                <div
-                                    onMouseEnter={() => this.setState({whateverVisible: true})}
-                                    onMouseLeave={() => this.setState({whateverVisible: false})}
-                                >
-                                    <span className="pulse" onClick={() => this.setState({whateverVisible: true, whatever1Visible: true, whatever2Visible: true, whatever3Visible: true})}></span>
+                                <div className="hoverable">
+                                    <span className="pulse"></span>
 
-                                    <div className={(whatever || whateverVisible) ? 'select' : 'select hidden'}>
-                                        <div
-                                            className="option"
-                                            onClick={() => this.handleClick('destination')}
-                                            onMouseEnter={() => this.setState({whatever1Visible: true})}
-                                            onMouseLeave={() => this.setState({whatever1Visible: false})}
-                                        >
-                                            <div className={(whatever === 'destination' || whateverVisible) ? 'label' : 'label hidden'}>Cíl</div>
-                                            <div className={whatever1Visible ? 'desc' : 'desc hidden'}>…je výhra, zisk a důvod, proč jít dál. Vidíš ho před sebou? Tak se mu přibliž, jak jen to jde, chyť ho a nepusť…</div>
-                                            <div className={whatever1Visible ? 'choose' : 'choose hidden'}>Vybrat</div>
+                                    <div className={!whatever ? 'select' : 'select hidden'}>
+                                        <div className="option" onClick={() => this.handleClick('destination')}>
+                                            <div className="label">Cíl</div>
+                                            <div className="desc">…je výhra, zisk a důvod, proč jít dál. Vidíš ho před sebou? Tak se mu přibliž, jak jen to jde, chyť ho a nepusť…</div>
+                                            <div className="choose">Vybrat</div>
                                         </div>
-                                        <div
-                                            className="option"
-                                            onClick={() => this.handleClick('dream')}
-                                            onMouseEnter={() => this.setState({whatever2Visible: true})}
-                                            onMouseLeave={() => this.setState({whatever2Visible: false})}
-                                        >
-                                            <div className={(whatever === 'dream' || whateverVisible) ? 'label' : 'label hidden'}>Sen</div>
-                                            <div className={whatever2Visible ? 'desc' : 'desc hidden'}>…dokáže probudit tvá pravé já, odhalit vize i skutečnou touhu po tom, kým chceš být. Přiměje tě otevřít oči a vydat se dál…</div>
-                                            <div className={whatever2Visible ? 'choose' : 'choose hidden'}>Vybrat</div>
+                                        <div className="option" onClick={() => this.handleClick('dream')}>
+                                            <div className="label">Sen</div>
+                                            <div className="desc">…dokáže probudit tvá pravé já, odhalit vize i skutečnou touhu po tom, kým chceš být. Přiměje tě otevřít oči a vydat se dál…</div>
+                                            <div className="choose">Vybrat</div>
                                         </div>
-                                        <div
-                                            className="option"
-                                            onClick={() => this.handleClick('wish')}
-                                            onMouseEnter={() => this.setState({whatever3Visible: true})}
-                                            onMouseLeave={() => this.setState({whatever3Visible: false})}
-                                        >
-                                            <div className={(whatever === 'wish' || whateverVisible) ? 'label' : 'label hidden'}>Přání</div>
-                                            <div className={whatever3Visible ? 'desc' : 'desc hidden'}>…získat i dávat, přijímat i nabídnout. Jen ty rozhoduješ, komu dnes rozzáří tvář úsměv. Jen ty máš dnes možnost stát se vítězem…</div>
-                                            <div className={whatever3Visible ? 'choose' : 'choose hidden'}>Vybrat</div>
+                                        <div className="option" onClick={() => this.handleClick('wish')}>
+                                            <div className="label">Přání</div>
+                                            <div className="desc">…získat i dávat, přijímat i nabídnout. Jen ty rozhoduješ, komu dnes rozzáří tvář úsměv. Jen ty máš dnes možnost stát se vítězem…</div>
+                                            <div className="choose">Vybrat</div>
                                         </div>
                                     </div>
+
                                 </div>
 
-                                <Fade duration={1500} when={!!whatever} delay={0}>
+                                <div className={!!whatever ? 'animated active' : 'animated'}>
                                     <p className="sm" style={{margin: '10px 0 20px'}}>Ti udělá</p>
-                                </Fade>
+                                </div>
 
-                                <Fade duration={1500} when={!!whatever} delay={500}>
+                                <div className={!!whatever ? 'animated active' : 'animated'} style={{transitionDelay: '.5s'}}>
                                     <p className="big upper" style={{marginBottom: '50px'}}>radost</p>
-                                </Fade>
+                                </div>
 
-                                <Fade duration={1500} when={!!whatever} delay={1000}>
+                                <div className={!!whatever ? 'animated active' : 'animated'} style={{transitionDelay: '1s'}}>
                                     <div className="scroll-downs">
                                         <div className="mousey">
                                             <div className="scroller"></div>
                                         </div>
                                     </div>
-                                </Fade>
+                                </div>
 
                             </div>
 
-                            {step > 1 &&
-                                <div className="section">
-                                    <p className="sm" style={{marginBottom: '50px'}}>Na {this.getWhateverPrep()}</p>
+                            <div className="section">
+                                <p className="sm" style={{marginBottom: '50px'}}>Na {this.getWhateverPrep()}</p>
 
-                                    <Fade duration={1500} delay={0}>
-                                        <div className="scroll" style={{width: '92px', marginBottom: '20px'}}><img src={dreamImg} /></div>
-                                        <p className="blue upper" style={{fontSize: '1.1em', textAlign: 'center', marginBottom: '50px'}}>{this.getWhatever()}</p>
-                                    </Fade>
-
-                                    <Fade duration={1500} delay={500}>
-                                        <p className="sm" style={{margin: '10px 0 20px'}}>přece nikdy není</p>
-                                    </Fade>
-
-                                    <Fade duration={1500} delay={1000}>
-                                        <p className="big upper" style={{marginBottom: '50px'}}>pozdě</p>
-                                    </Fade>
-
-                                    <Fade duration={1500} delay={1500}>
-                                        <div className="scroll-downs">
-                                            <div className="mousey">
-                                                <div className="scroller"></div>
-                                            </div>
-                                        </div>
-                                    </Fade>
+                                <div className={step === 2 ? 'animated active' : 'animated'}>
+                                    <div className="scroll" style={{width: '92px', marginBottom: '20px'}}><img src={dreamImg} /></div>
+                                    <p className="blue upper" style={{fontSize: '1.1em', textAlign: 'center', marginBottom: '50px'}}>{this.getWhatever()}</p>
                                 </div>
-                            }
 
-                            {step > 1 &&
-                                <div className="section">
-                                    <p className="sm" style={{marginBottom: '30px'}}>Jmenuju se</p>
-
-                                    <Fade duration={1500} delay={0}>
-                                        <p className="blue upper" style={{fontSize: '2em', textAlign: 'center', marginBottom: '20px'}}>Elate</p>
-                                        <div className="scroll" style={{width: '130px', marginBottom: '30px'}}><img src={elateImg} /></div>
-                                    </Fade>
-
-                                    <Fade duration={1500} delay={500}>
-                                        <p className="sm" style={{margin: '10px 0 20px'}}>a pomůžu</p>
-                                    </Fade>
-
-                                    <Fade duration={1500} delay={1000}>
-                                        <p className="sm" style={{margin: '10px 0 50px'}}>Ti tvůj <b className="blue upper">sen</b> splnit</p>
-                                    </Fade>
-
-                                    <Fade duration={1500} delay={1500}>
-                                        <button className="full" onClick={this.handleCTAClick}>Vyzkoušet</button>
-                                    </Fade>
+                                <div className={step === 2 ? 'animated active' : 'animated'} style={{transitionDelay: '.5s'}}>
+                                    <p className="sm" style={{margin: '10px 0 20px'}}>přece nikdy není</p>
                                 </div>
-                            }
 
-                            {step > 1 &&
-                                <div className="section">
-                                    <Fade duration={1500} delay={0}>
-                                        <p className="big upper blue" style={{marginBottom: '30px'}}>Děkuji</p>
-                                    </Fade>
-
-                                    <Fade duration={1500} delay={500}>
-                                        <p className="sm" style={{marginBottom: '15px'}}>Momentálně mi pomoháš splnit můj sen.</p>
-                                    </Fade>
-
-                                    <Fade duration={1500} delay={1500}>
-                                        <div className="progress">
-                                            <div className="fill" stye={{width: '33%'}}></div>
-                                        </div>
-                                    </Fade>
-
-                                    <Fade duration={1500} delay={2000}>
-                                        <p className="sm" style={{marginBottom: '30px', fontSize: '.85em'}}>Aspoň sis dokázal, jak důležitá je asistence při plnění snu.</p>
-                                    </Fade>
-
-                                    <Fade duration={1500} delay={2500}>
-                                        <div className="scroll" style={{width: '150px', marginBottom: '30px'}}><img src={rejdaImg} /></div>
-                                    </Fade>
-
-                                    <Fade duration={1500} delay={3000}>
-                                        <p className="sm" style={{marginBottom: '30px'}}>Zanech mi kontakt a buď u toho, bude to velké!</p>
-                                    </Fade>
-
-                                    <Fade duration={1500} delay={3500}>
-                                        <div className="btns">
-                                            <button>Tel.</button>
-                                            <button>E-mail</button>
-                                        </div>
-                                    </Fade>
+                                <div className={step === 2 ? 'animated active' : 'animated'} style={{transitionDelay: '1s'}}>
+                                    <p className="big upper" style={{marginBottom: '50px'}}>pozdě</p>
                                 </div>
-                            }
+
+                                <div className={step === 2 ? 'animated active' : 'animated'} style={{transitionDelay: '1.5s'}}>
+                                    <div className="scroll-downs">
+                                        <div className="mousey">
+                                            <div className="scroller"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="section">
+                                <p className="sm" style={{marginBottom: '30px'}}>Jmenuju se</p>
+
+                                <div className={step === 3 ? 'animated active' : 'animated'}>
+                                    <p className="blue upper" style={{fontSize: '2em', textAlign: 'center', marginBottom: '20px'}}>Elate</p>
+                                    <div className="scroll" style={{width: '130px', marginBottom: '30px'}}><img src={elateImg} /></div>
+                                </div>
+
+                                <div className={step === 3 ? 'animated active' : 'animated'} style={{transitionDelay: '.5s'}}>
+                                    <p className="sm" style={{margin: '10px 0 20px'}}>a pomůžu</p>
+                                </div>
+
+                                <div className={step === 3 ? 'animated active' : 'animated'} style={{transitionDelay: '1s'}}>
+                                    <p className="sm" style={{margin: '10px 0 50px'}}>Ti tvůj <b className="blue upper">sen</b> splnit</p>
+                                </div>
+
+                                <div className={step === 3 ? 'animated active' : 'animated'} style={{transitionDelay: '1.5s'}}>
+                                    <button className="full" onClick={this.handleCTAClick}>Vyzkoušet</button>
+                                </div>
+                            </div>
+
+                            <div className="section">
+                                <div className={step === 4 ? 'animated active' : 'animated'}>
+                                    <p className="big upper blue" style={{marginBottom: '30px'}}>Děkuji</p>
+                                </div>
+
+                                <div className={step === 4 ? 'animated active' : 'animated'} style={{transitionDelay: '.5s'}}>
+                                    <p className="sm" style={{marginBottom: '15px'}}>Momentálně mi pomoháš splnit můj sen.</p>
+                                </div>
+
+                                {/*<div className={step === 4 ? 'animated active' : 'animated'} style={{transitionDelay: '1s'}}>
+                                    <div className="progress">
+                                        <div className="fill" stye={{width: '33%'}}></div>
+                                    </div>
+                                </div>*/}
+
+                                <div className={step === 4 ? 'animated active' : 'animated'} style={{transitionDelay: '1.5s'}}>
+                                    <p className="sm" style={{marginBottom: '30px', fontSize: '.85em'}}>Aspoň sis dokázal, jak důležitá je asistence při plnění snu.</p>
+                                </div>
+
+                                <div className={step === 4 ? 'animated active' : 'animated'} style={{transitionDelay: '2s'}}>
+                                    <div className="scroll" style={{width: '150px', marginBottom: '30px'}}><img src={rejdaImg} /></div>
+                                </div>
+
+                                <div className={step === 4 ? 'animated active' : 'animated'} style={{transitionDelay: '2.5s'}}>
+                                    <p className="sm" style={{marginBottom: '30px'}}>Zanech mi kontakt a buď u toho, bude to velké!</p>
+                                </div>
+
+                                <div className={step === 4 ? 'animated active' : 'animated'} style={{transitionDelay: '3s'}}>
+                                    <div className="btns">
+                                        <button>Tel.</button>
+                                        <button>E-mail</button>
+                                    </div>
+                                </div>
+                            </div>
                         </ReactFullpage.Wrapper>
                     )}
                 />
