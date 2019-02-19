@@ -56,18 +56,6 @@ class IndexPage extends Component {
         }
     }
 
-    getWhateverSuffix = () => {
-        const { whatever } = this.state
-
-        switch(whatever) {
-            case 'wish':
-                return 'é'
-
-            default:
-                return 'ý'
-        }
-    }
-
     handleCTAClick = () => {
         ReactGA.event({
             category: 'User',
@@ -110,7 +98,7 @@ class IndexPage extends Component {
                     render={({ state, fullpageApi }) => (
                         <ReactFullpage.Wrapper>
                             <div className="section">
-                                <p className="sm m2050">I mal{this.getWhateverSuffix()}</p>
+                                <p className="sm m2050">Splnit si i nejmenší</p>
 
                                 <div
                                     onMouseEnter={() => this.setState({whateverVisible: true})}
@@ -126,7 +114,7 @@ class IndexPage extends Component {
                                             onMouseLeave={() => this.setState({whatever1Visible: false})}
                                         >
                                             <div className={(whatever === 'destination' || whateverVisible) ? 'label' : 'label hidden'}>Cíl</div>
-                                            <div className={whatever1Visible ? 'desc' : 'desc hidden'}>Cíl může být: nějaká meta, stav, uspořádání, objekt, kterého má být v reálném čase dosaženo</div>
+                                            <div className={whatever1Visible ? 'desc' : 'desc hidden'}>…je výhra, zisk a důvod, proč jít dál. Vidíš ho před sebou? Tak se mu přibliž, jak jen to jde, chyť ho a nepusť…</div>
                                             <div className={whatever1Visible ? 'choose' : 'choose hidden'}>Vybrat</div>
                                         </div>
                                         <div
@@ -136,7 +124,7 @@ class IndexPage extends Component {
                                             onMouseLeave={() => this.setState({whatever2Visible: false})}
                                         >
                                             <div className={(whatever === 'dream' || whateverVisible) ? 'label' : 'label hidden'}>Sen</div>
-                                            <div className={whatever2Visible ? 'desc' : 'desc hidden'}>Sny často ukazují události, které jsou ve skutečnosti nemožné nebo nepravděpodobné</div>
+                                            <div className={whatever2Visible ? 'desc' : 'desc hidden'}>…dokáže probudit tvá pravé já, odhalit vize i skutečnou touhu po tom, kým chceš být. Přiměje tě otevřít oči a vydat se dál…</div>
                                             <div className={whatever2Visible ? 'choose' : 'choose hidden'}>Vybrat</div>
                                         </div>
                                         <div
@@ -146,7 +134,7 @@ class IndexPage extends Component {
                                             onMouseLeave={() => this.setState({whatever3Visible: false})}
                                         >
                                             <div className={(whatever === 'wish' || whateverVisible) ? 'label' : 'label hidden'}>Přání</div>
-                                            <div className={whatever3Visible ? 'desc' : 'desc hidden'}>Něco, co byste ač už tajně či veřejně chtěli dostat nebo dát</div>
+                                            <div className={whatever3Visible ? 'desc' : 'desc hidden'}>…získat i dávat, přijímat i nabídnout. Jen ty rozhoduješ, komu dnes rozzáří tvář úsměv. Jen ty máš dnes možnost stát se vítězem…</div>
                                             <div className={whatever3Visible ? 'choose' : 'choose hidden'}>Vybrat</div>
                                         </div>
                                     </div>
