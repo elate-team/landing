@@ -75,7 +75,7 @@ class IndexPage extends Component {
 
         this.setState({error: ''})
 
-        axios.post('http://api.dokku.elate.cz/leads', {phone, email})
+        axios.post('http://api.elate.cz/leads', {phone, email})
             .then(() => this.setState({success: true}))
             .catch(console.error)
     }
