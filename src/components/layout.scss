@@ -32,7 +32,7 @@ body {
         width: 3px;
         padding: 2px 8px;
         height: 35px;
-        border: 2px solid #bbb;
+        border: 2px solid darkgrey;
         border-radius: 25px;
         opacity: 0.75;
         box-sizing: content-box;
@@ -42,7 +42,7 @@ body {
         width: 3px;
         height: 5px;
         border-radius: 25%;
-        background-color: #bbb;
+        background-color: darkgrey;
         animation-name: scroll;
         animation-duration: 2.2s;
         animation-timing-function: cubic-bezier(.15,.41,.69,.94);
@@ -212,7 +212,13 @@ button {
     }
 
     &.hidden {
+
         opacity: 0 !important;
+
+        * {
+            cursor: default !important;
+        }
+
     }
 
     .option {

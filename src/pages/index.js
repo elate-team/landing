@@ -117,14 +117,18 @@ class IndexPage extends Component {
                                 </div>
 
                                 <div className={!!whatever ? 'animated active' : 'animated'}>
-                                    <p className="sm" style={{margin: '10px 0 20px'}}>Ti udělá</p>
+                                    <p className="big blue" style={{margin: '10px 0 20px'}}>{this.getWhatever()}</p>
                                 </div>
 
                                 <div className={!!whatever ? 'animated active' : 'animated'} style={{transitionDelay: '.5s'}}>
-                                    <p className="big upper" style={{marginBottom: '50px'}}>radost</p>
+                                    <p className="sm" style={{margin: '10px 0 20px'}}>Ti udělá</p>
                                 </div>
 
                                 <div className={!!whatever ? 'animated active' : 'animated'} style={{transitionDelay: '1s'}}>
+                                    <p className="big upper" style={{marginBottom: '50px'}}>radost</p>
+                                </div>
+
+                                <div className={!!whatever ? 'animated active' : 'animated'} style={{transitionDelay: '1.5s'}}>
                                     <div className="scroll-downs">
                                         <div className="mousey">
                                             <div className="scroller"></div>
