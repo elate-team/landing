@@ -5,6 +5,7 @@
   "author": "",
   "dependencies": {
     "@fullpage/react-fullpage": "^0.1.13",
+    "axios": "^0.18.0",
     "gatsby": "^2.1.4",
     "gatsby-image": "^2.0.29",
     "gatsby-plugin-manifest": "^2.0.17",
@@ -20,8 +21,7 @@
     "react": "^16.8.2",
     "react-dom": "^16.8.2",
     "react-ga": "^2.5.7",
-    "react-helmet": "^5.2.0",
-    "react-reveal": "^1.2.2"
+    "react-helmet": "^5.2.0"
   },
   "keywords": [
     "gatsby"

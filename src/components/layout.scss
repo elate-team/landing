@@ -22,6 +22,40 @@ body {
 
 }
 
+form {
+
+    display: block;
+    margin: 0 auto;
+    max-width: 320px;
+
+    button {
+        display: block;
+        margin-bottom: 15px;
+        width: 100%;
+    }
+
+    .error {
+        color: indianred;
+    }
+
+    .thanks {
+        padding: 15px;
+        text-align: center;
+        color: #6dbff3;
+        font-size: 1.5em;
+        font-weight: 600;
+    }
+
+    input {
+        display: block;
+        width: calc(100% - 20px);
+        border: 1px solid #bbb;
+        margin-bottom: 15px;
+        padding: 10px;
+    }
+
+}
+
 .scroll-downs {
 
     margin: auto;

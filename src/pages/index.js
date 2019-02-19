@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import ReactFullpage from '@fullpage/react-fullpage'
-import Fade from 'react-reveal/Fade'
 import Helmet from 'react-helmet'
 import ReactGA from 'react-ga'
+import axios from 'axios'
 
 import Layout from '../components/layout'
 import SEO from '../components/seo'
@@ -15,11 +15,15 @@ class IndexPage extends Component {
 
     state = {
         step: 1,
-        whatever: null
+        whatever: null,
+        phone: '',
+        email: '',
+        error: '',
+        success: false
     }
 
     componentDidMount = () => {
-        window.fullpage_api.setAllowScrolling(false)
+        // window.fullpage_api.setAllowScrolling(false)
 
         ReactGA.initialize('UA-134679279-1');
         ReactGA.pageview(window.location.pathname);
@@ -61,6 +65,21 @@ class IndexPage extends Component {
         window.fullpage_api.moveSectionDown()
     }
 
+    handleSubmit = (e) => {
+        e.preventDefault()
+
+        const { phone, email } = this.state
+
+        if(!email.length || !/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email)) return this.setState({error: 'E-mail není ve správném formátu'})
+        if(!phone.length || !/(^$|^(\+)?[0-9\ ]{4,16}$)/.test(phone)) return this.setState({error: 'Telefon není ve správném formátu'})
+
+        this.setState({error: ''})
+
+        axios.post('http://api.dokku.elate.cz/leads', {phone, email})
+            .then(() => this.setState({success: true}))
+            .catch(console.error)
+    }
+
     handleClick = (whatever) => {
         ReactGA.event({
             category: 'User',
@@ -73,12 +92,12 @@ class IndexPage extends Component {
     }
 
     slideCheck = (from, to) => {
-        if(to.index === 2) window.fullpage_api.setAllowScrolling(false)
+        // if(to.index === 2) window.fullpage_api.setAllowScrolling(false)
         if(this.state.step !== to.index + 1) this.setState({step: to.index + 1})
     }
 
     render = () => {
-        const { step, whatever } = this.state
+        const { step, whatever, phone, email, error, success } = this.state
 
         return (
             <Layout>
@@ -199,23 +218,29 @@ class IndexPage extends Component {
                                     </div>
                                 </div>*/}
 
-                                <div className={step === 4 ? 'animated active' : 'animated'} style={{transitionDelay: '1.5s'}}>
+                                <div className={step === 4 ? 'animated active' : 'animated'} style={{transitionDelay: '1s'}}>
                                     <p className="sm" style={{marginBottom: '30px', fontSize: '.85em'}}>Aspoň sis dokázal, jak důležitá je asistence při plnění snu.</p>
                                 </div>
 
-                                <div className={step === 4 ? 'animated active' : 'animated'} style={{transitionDelay: '2s'}}>
+                                <div className={step === 4 ? 'animated active' : 'animated'} style={{transitionDelay: '1.5s'}}>
                                     <div className="scroll" style={{width: '150px', marginBottom: '30px'}}><img src={rejdaImg} /></div>
                                 </div>
 
-                                <div className={step === 4 ? 'animated active' : 'animated'} style={{transitionDelay: '2.5s'}}>
+                                <div className={step === 4 ? 'animated active' : 'animated'} style={{transitionDelay: '2s'}}>
                                     <p className="sm" style={{marginBottom: '30px'}}>Zanech mi kontakt a buď u toho, bude to velké!</p>
                                 </div>
 
-                                <div className={step === 4 ? 'animated active' : 'animated'} style={{transitionDelay: '3s'}}>
-                                    <div className="btns">
-                                        <button>Tel.</button>
-                                        <button>E-mail</button>
-                                    </div>
+                                <div className={step === 4 ? 'animated active' : 'animated'} style={{transitionDelay: '2.5s'}}>
+                                    <form onSubmit={this.handleSubmit}>
+                                        {!success ?
+                                            <div>
+                                                <input type="text" value={phone} onChange={e => this.setState({phone: e.target.value})} placeholder="Tel." />
+                                                <input type="text" value={email} onChange={e => this.setState({email: e.target.value})} placeholder="E-mail" />
+                                                <button>Odeslat</button>
+                                            </div> :
+                                            <div className="thanks">Děkujeme!</div>
+                                        }
+                                    </form>
                                 </div>
                             </div>
                         </ReactFullpage.Wrapper>
