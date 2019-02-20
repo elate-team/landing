@@ -223,7 +223,7 @@ class IndexPage extends Component {
                                 </div>
 
                                 <div className={step === 4 ? 'animated active' : 'animated'} style={{transitionDelay: '1.5s'}}>
-                                    <div className="scroll" style={{width: '150px', marginBottom: '30px'}}><img src={rejdaImg} /></div>
+                                    <div className="scroll lukin" style={{marginBottom: '20px'}}><img src={rejdaImg} /></div>
                                 </div>
 
                                 <div className={step === 4 ? 'animated active' : 'animated'} style={{transitionDelay: '2s'}}>

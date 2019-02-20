@@ -193,6 +193,16 @@ button {
     width: 20px;
     margin: 0 auto;
 
+    &.lukin {
+
+        width: 90px;
+
+        @media (min-width: 640px) {
+            width: 150px;
+        }
+
+    }
+
     img {
         width: 100%;
     }
