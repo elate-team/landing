@@ -16,6 +16,7 @@ class IndexPage extends Component {
     state = {
         step: 1,
         whatever: null,
+        mobileSelectVisible: false,
         phone: '',
         email: '',
         error: '',
@@ -101,7 +102,7 @@ class IndexPage extends Component {
     }
 
     render = () => {
-        const { step, whatever, phone, email, error, success } = this.state
+        const { step, whatever, phone, email, error, success, mobileSelectVisible } = this.state
 
         return (
             <Layout>
@@ -117,9 +118,27 @@ class IndexPage extends Component {
                                 <p className="sm m2050">Splnit si i nejmenší</p>
 
                                 <div className="hoverable">
-                                    <span className="pulse"></span>
+                                    <span className="pulse" onClick={() => this.setState({mobileSelectVisible: true})}></span>
 
-                                    <div className={!whatever ? 'select' : 'select hidden'}>
+                                    <div className={(mobileSelectVisible && !whatever) ? 'select mobile' : 'select mobile hidden'}>
+                                        <div className="option" onClick={() => this.handleClick('destination')}>
+                                            <div className="label">Cíl</div>
+                                            <div className="desc">…je výhra, zisk a důvod, proč jít dál. Vidíš ho před sebou? Tak se mu přibliž, jak jen to jde, chyť ho a nepusť…</div>
+                                            <div className="choose">Vybrat</div>
+                                        </div>
+                                        <div className="option" onClick={() => this.handleClick('dream')}>
+                                            <div className="label">Sen</div>
+                                            <div className="desc">…dokáže probudit tvá pravé já, odhalit vize i skutečnou touhu po tom, kým chceš být. Přiměje tě otevřít oči a vydat se dál…</div>
+                                            <div className="choose">Vybrat</div>
+                                        </div>
+                                        <div className="option" onClick={() => this.handleClick('wish')}>
+                                            <div className="label">Přání</div>
+                                            <div className="desc">…získat i dávat, přijímat i nabídnout. Jen ty rozhoduješ, komu dnes rozzáří tvář úsměv. Jen ty máš dnes možnost stát se vítězem…</div>
+                                            <div className="choose">Vybrat</div>
+                                        </div>
+                                    </div>
+
+                                    <div className={!whatever ? 'select tablet' : 'select tablet hidden'}>
                                         <div className="option" onClick={() => this.handleClick('destination')}>
                                             <div className="label">Cíl</div>
                                             <div className="desc">…je výhra, zisk a důvod, proč jít dál. Vidíš ho před sebou? Tak se mu přibliž, jak jen to jde, chyť ho a nepusť…</div>
