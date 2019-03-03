@@ -115,10 +115,10 @@ class IndexPage extends Component {
                     render={({ state, fullpageApi }) => (
                         <ReactFullpage.Wrapper>
                             <div className="section">
-                                <p className="sm m2050">Splnit si i nejmenší</p>
+                                <p className="sm m2050" onClick={() => this.setState({mobileSelectVisible: true})}>Splnit si i nejmenší</p>
 
-                                <div className="hoverable">
-                                    <span className="pulse" onClick={() => this.setState({mobileSelectVisible: true})}></span>
+                                <div className="hoverable" onClick={() => this.setState({mobileSelectVisible: true})}>
+                                    <span className="pulse"></span>
 
                                     <div className={(mobileSelectVisible && !whatever) ? 'select mobile' : 'select mobile hidden'}>
                                         <div className="option" onClick={() => this.handleClick('destination')}>
